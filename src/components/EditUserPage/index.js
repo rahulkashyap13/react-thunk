@@ -22,18 +22,6 @@ class EditUser extends Component {
         description: profileData.profileInfo.description,
       })
     }
-
-    componentDidUpdate(prevProps) {
-      const { profileData } = this.props;
-      if(prevProps.profileData!== this.props.profileData) {
-        this.setState({
-          firstName: profileData.profileInfo.firstName,
-          lastName: profileData.profileInfo.lastName,
-          email: profileData.profileInfo.email,  
-          description: profileData.profileInfo.description,
-        })
-      }
-    }
     handleSubmit = (e) => {
     e.preventDefault();
     this.setState({

@@ -19,8 +19,9 @@ class LoginPage extends Component {
   componentDidMount() {
    // const localStorage.getItem('user')
     const storageSession=JSON.parse(localStorage.getItem('user'));
+    console.log(storageSession);
     if(storageSession) {
-      this.props.history.push("/"+storageSession.token);
+      this.props.history.push("/dashboard");
     };
   }
   
@@ -72,15 +73,15 @@ class LoginPage extends Component {
       <div className="login-page">
         <div className="login-wrap">
           <div className="login-box">	
-            <h4 className="auth-title">Sign In</h4>
+          <h4 className="text-center">Sign In</h4>
             <Form>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>User Name</Form.Label>
                 <Form.Control type="email" placeholder="Enter email"  
                   name="email"
                   value={ this.state.email }
-                  type="email"
-                  placeholder="Email Address"
+                  type="text"
+                  placeholder="username"
                   onChange={ this.handleChange }
                   autoComplete="username"/>
                   {errors && errors[ "email" ] ? (
@@ -108,7 +109,7 @@ class LoginPage extends Component {
               >
                 Submit
               </Button>
-              <p>Sign Up</p>
+              <p className="text-right"><a href="registration"><strong>Sign Up</strong></a></p>
             </Form>
           </div>
         </div>

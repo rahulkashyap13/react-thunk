@@ -5,7 +5,8 @@ import './App.css';
 import Posts from "./containers/Posts";
 import Login from "./containers/Login";
 import Registration from "./containers/Registration";
-import EditUser from "./containers/EditUser";
+import AddPost from "./containers/AddPost";
+import EditPost from "./containers/EditPost";
 
 const DefaultLayout = ({ component: Component, layout: Layout, ...rest }) => {
 	return (
@@ -26,8 +27,9 @@ class App extends Component {
 			<Switch>				
 				<Route path="/login" component={ Login } />
 				<Route path="/registration" component={ Registration } />
-				<DefaultLayout exact path="/:userName" layout={ Layout } component={ Posts } />
-				<DefaultLayout path="/:userName/edit" layout={ Layout } component={ EditUser } />
+				<DefaultLayout exact path="/dashboard" layout={ Layout } component={ Posts } />
+				<DefaultLayout path="/add-post" layout={ Layout } component={ AddPost } />
+				<DefaultLayout path="/edit-post/:id" layout={ Layout } component={ EditPost } />
 				<Redirect to="/login" />
 			</Switch>
 		);

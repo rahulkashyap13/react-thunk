@@ -13,16 +13,10 @@ class Header extends Component {
     }
   }
   componentDidMount() {
-    const { location } = this.props;
-    const { pathname } = location;
-    this.setState({ userName: pathname.split( "/" ) [ 1 ]});
-
+  
     const storageSession=JSON.parse(localStorage.getItem('user'));
     if(!storageSession) {
-       this.props.history.push("/login");
-    }
-    else {
-      this.props.getProfile();
+      this.props.history.push("/login");
     }
 
   }
@@ -35,8 +29,8 @@ class Header extends Component {
     const { userName } = this.state;
     return (
       <Navbar bg="light" variant="light" className="back-wrap">
-        <Navbar.Brand href="#home" className="text-uppercase">{ userName }</Navbar.Brand>
-        <Navbar.Toggle />
+        {/* <Navbar.Brand href="#home" className="text-uppercase">{ userName }</Navbar.Brand>
+        <Navbar.Toggle /> */}
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
             <Button variant="primary" onClick={ this.logOut }>Logout</Button>
@@ -50,9 +44,6 @@ const mapDispatchToProps = dispatch => {
   return {
     logoutAction: () => {
       dispatch(logout());
-    },
-    getProfile: () => {
-      dispatch(getProfile());
     }
   };
 };

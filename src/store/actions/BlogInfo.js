@@ -7,24 +7,9 @@ export function getPosts(data) {
     const stateData = getState().PostReducer;
     dispatch(request());
     axios
-      .get(AppConfig.API_ENDPOINT + "/posts", {
-        params: data
-      })
+      .get("http://183.182.84.84/restapi/wp-json/wp/v2/posts")
       .then(response => {
-        let hasMore = false;
-        if (response.data.length > 0) {
-          hasMore = true;
-        } else {
-          hasMore = false;
-        }
-        const dataSave = {};
-        dataSave.hasMore = hasMore;
-        dataSave.totalPost = response.headers[ "x-total-count" ];
-        dataSave.postData =
-          stateData.postInfo.postData && data._page !== 1
-            ? stateData.postInfo.postData.concat(response.data)
-            : response.data;
-        dispatch(success(dataSave));
+        dispatch(success(response));
       })
       .catch(error => {
         if (error.response && error.response.data.responseCode === 401) {

@@ -12,14 +12,11 @@ const Layout = (props) => {
 			<Container>			
 				<Header />		
 				<Row className="pl-3 pr-3 mt-1">
-					<Col xs={ 2 } className= "box-border">
+					<Col xs={ 4 } className= "box-border">
 						<Sidebar />
 					</Col>
-					<Col xs={ 6 } className= "box-border">
+					<Col xs={ 8 } className= "box-border">
 					{ props.children }				
-					</Col>
-					<Col xs={ 4 } className= "box-border">
-						<RightSideBar />
 					</Col>
 				</Row>
 				<Footer />

@@ -3,8 +3,8 @@ import { ValidationTypes } from "js-object-validation";
 export const LoginValidations = {
   email: {
     [ ValidationTypes.REQUIRED ]: true,
-    [ ValidationTypes.EMAIL ]: true,
-    [ ValidationTypes.MAXLENGTH ]: 100,
+    [ ValidationTypes.MINLENGTH ]: 2,
+    [ ValidationTypes.MAXLENGTH ]: 8,
   },
   password: {
     [ ValidationTypes.REQUIRED ]: true,
@@ -15,9 +15,9 @@ export const LoginValidations = {
 
 export const LoginValidationsMessaages = {
   email: {
-    [ ValidationTypes.REQUIRED ]: "Please enter email.",
-    [ ValidationTypes.EMAIL ]: "Please enter a valid email.",
-    [ ValidationTypes.MAXLENGTH ]: "Email cannot have more that 100 characters.",
+    [ ValidationTypes.REQUIRED ]: "Please enter user name.",
+    [ ValidationTypes.MINLENGTH ]: "Please enter atleast 5 characters",
+    [ ValidationTypes.MAXLENGTH ]: "User Name cannot have more that 8 characters.",
   },
   password: {
     [ ValidationTypes.REQUIRED ]: "Please enter password.",

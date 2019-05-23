@@ -2,26 +2,23 @@ import { push } from "react-router-redux";
 import { actionTypes } from "./actionTypes";
 import { toastr } from "react-redux-toastr";
 import axios from "axios";
-import { AppConfig } from "../../constant/AppConfig";
 export function login(data) {
   return dispatch => {
     dispatch(request({ data }));
     axios
-      .get(AppConfig.API_ENDPOINT + "/user/")
+      .post("http://183.182.84.84/restapi/wp-json/jwt-auth/v1/token", {
+        username: data.email,
+        password: data.password
+      })
       .then(response => {
-        const responseData = response.data;
-        if (responseData.email !== data.email) {
-          toastr.error("Error", "Email id not exist.");
-        } else if (responseData.password !== data.password) {
-          toastr.error("Error", "Password is not valid.");
-        } else {
+        if(response.status === 200) {
           const authData = {
-            token: responseData.userName
+            token: response.data.token
           };
           localStorage.setItem("user", JSON.stringify(authData));
           toastr.success("Success", "Successfully Login");
           dispatch(success(authData));
-          dispatch(push("/" + responseData.userName));
+          dispatch(push("/dashboard"));
         }
       })
       .catch(error => {
