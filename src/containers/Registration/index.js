@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { login } from "./../../store/actions/Login";
+import { login } from "../../store/actions/Login";
 import Validator from "js-object-validation";
 import { Form, Button } from 'react-bootstrap';
 import { LoginValidations, LoginValidationsMessaages } from "../../validations";
-import "./Login.css";
-class LoginPage extends Component {
+import { RedirectTo } from "./../../../store/actions/Redirect";
+import "../Login/Login.css";
+
+class RegistrationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,7 +74,7 @@ class LoginPage extends Component {
       <div className="login-page">
         <div className="login-wrap">
           <div className="login-box">	
-            <h4 className="auth-title">Sign In</h4>
+          <h4 className="auth-title">Sign Up</h4>
             <Form>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -108,7 +110,7 @@ class LoginPage extends Component {
               >
                 Submit
               </Button>
-              <p>Sign Up</p>
+              <p>Sign In</p>
             </Form>
           </div>
         </div>
@@ -135,4 +137,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   undefined,
   mapDispatchToProps
-)(LoginPage);
+)(RegistrationPage);

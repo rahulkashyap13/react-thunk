@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import './App.css';
 import Posts from "./containers/Posts";
 import Login from "./containers/Login";
+import Registration from "./containers/Registration";
 import EditUser from "./containers/EditUser";
 
 const DefaultLayout = ({ component: Component, layout: Layout, ...rest }) => {
@@ -22,9 +23,9 @@ const DefaultLayout = ({ component: Component, layout: Layout, ...rest }) => {
 class App extends Component {
 	render() {
 		return (
-			<Switch>
-				
+			<Switch>				
 				<Route path="/login" component={ Login } />
+				<Route path="/registration" component={ Registration } />
 				<DefaultLayout exact path="/:userName" layout={ Layout } component={ Posts } />
 				<DefaultLayout path="/:userName/edit" layout={ Layout } component={ EditUser } />
 				<Redirect to="/login" />
